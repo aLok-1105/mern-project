@@ -6,11 +6,15 @@ const express = require('express');
 const app = express();
 
 dotenv.config({ path: './config.env' });
+
 require('./db/conn');
 
+console.log(app.use(express.json()))
+
+//linked the router file
+app.use(require('./router/auth'));
+
 const PORT = process.env.PORT;
-
-
 
 //Middleware
 const mildleware = (req, res, next) => {
