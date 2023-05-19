@@ -9,7 +9,7 @@ dotenv.config({ path: './config.env' });
 
 require('./db/conn');
 
-console.log(app.use(express.json()))
+app.use(express.json());
 
 //linked the router file
 app.use(require('./router/auth'));
