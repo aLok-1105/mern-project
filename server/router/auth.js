@@ -1,3 +1,5 @@
+/** @format */
+
 const express = require('express');
 const router = express.Router();
 
@@ -8,33 +10,56 @@ router.get('/', (req, res) => {
 	res.send('Hello World from auth');
 });
 
-router.post('/register', async (req, res)=>{
 
-    const {name, email, work, phone, password, cpassword} = req.body;
+//async await
+router.post('/register', async (req, res) => {
+	const { name, email, work, phone, password, cpassword } = req.body;
 
-    if(!name || !email || !work || !phone || !password || !cpassword){
-        return res.status(422).json({error:"Invalid"})
+	if (!name || !email || !work || !phone || !password || !cpassword) {
+		return res.status(422).json({ error: 'Invalid' });
+	}
+
+	try {
+		const userExists = await User.findOne({ email: email });
+		if (userExists) {
+			return res.status(422).json({ error: 'Email exists!!' });
+		}
+
+		const user = new User({
+			name,
+			email,
+			work,
+			phone,
+			password,
+			cpassword,
+		});
+
+		await user.save();
+
+		res.status(201).json({ message: 'User Successfully Registered' });
+	} catch (error) {
+		console.log(error);
+	}
+});
+
+router.post('/login', async (req, res)=>{
+    const { email, password } = req.body;
+    if(!email && !password){
+        return res.status(422).json({error:'Invalid Credentials'});
     }
 
     try {
-        const userExists = await User.findOne({email:email});
-            if(userExists){
-                return res.status(422).json({error:"Email exists!!"})
-            }    
+        const trueUser = await User.findOne({email, password});
+        if (trueUser) {
+			return res.status(200).json({message: 'Logged In!!!' });
+		}
 
-            const user = new User({name, email, work, phone, password, cpassword});
-    
-            await user.save();
+        return res.status(422).json({error:'Invalid Credentials'});
 
-            res.status(201).json({message: "User Successfully Registered"});
-
-        
     } catch (error) {
         console.log(error);
     }
 })
-
-
 
 //promises
 
@@ -57,7 +82,6 @@ router.post('/register', async (req, res)=>{
 //             res.status(201).json({message: "User Successfully Registered"});
 //         }).catch((err)=>res.status(500).json({error: "Failed to register"}));
 //     }).catch((err)=>{console.log(err)})
-
 
 // })
 
