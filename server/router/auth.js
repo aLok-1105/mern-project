@@ -10,7 +10,6 @@ router.get('/', (req, res) => {
 	res.send('Hello World from auth');
 });
 
-
 //async await
 router.post('/register', async (req, res) => {
 	const { name, email, work, phone, password, cpassword } = req.body;
@@ -23,43 +22,49 @@ router.post('/register', async (req, res) => {
 		const userExists = await User.findOne({ email: email });
 		if (userExists) {
 			return res.status(422).json({ error: 'Email exists!!' });
+		} else if (password != cpassword) {
+			return res.status(422).json({ error: 'Passwords do not match' });
+		} else {
+			const user = new User({
+				name,
+				email,
+				work,
+				phone,
+				password,
+				cpassword,
+			});
+
+            //hashing in userSchema
+			await user.save();
+
+			res.status(201).json({
+				message: 'User Successfully Registered',
+			});
 		}
-
-		const user = new User({
-			name,
-			email,
-			work,
-			phone,
-			password,
-			cpassword,
-		});
-
-		await user.save();
-
-		res.status(201).json({ message: 'User Successfully Registered' });
 	} catch (error) {
 		console.log(error);
 	}
 });
 
-router.post('/login', async (req, res)=>{
-    const { email, password } = req.body;
-    if(!email && !password){
-        return res.status(422).json({error:'Invalid Credentials'});
-    }
+//login route
 
-    try {
-        const trueUser = await User.findOne({email, password});
-        if (trueUser) {
-			return res.status(200).json({message: 'Logged In!!!' });
+router.post('/login', async (req, res) => {
+	const { email, password } = req.body;
+	if (!email || !password) {
+		return res.status(400).json({ error: 'Please fill the data' });
+	}
+
+	try {
+		const trueUser = await User.findOne({ email, password });
+		if (trueUser) {
+			return res.status(200).json({ message: 'Logged In!!!' });
 		}
 
-        return res.status(422).json({error:'Invalid Credentials'});
-
-    } catch (error) {
-        console.log(error);
-    }
-})
+		return res.status(422).json({ error: 'Invalid Credentials' });
+	} catch (error) {
+		console.log(error);
+	}
+});
 
 //promises
 
