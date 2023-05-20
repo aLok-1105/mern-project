@@ -30,7 +30,6 @@ const userSchema = new mongoose.Schema({
 
 
 //hashing of password
-
 userSchema.pre('save', async function(next) {
     if(this.isModified('password')){
         this.password = await bcryptjs.hash(this.password, 12);
@@ -39,7 +38,7 @@ userSchema.pre('save', async function(next) {
     next();
 });
 
-
+//collection creation
 const User = mongoose.model('USER', userSchema);
 
-module.exports = User;
+module.exports = User;//export at bottom

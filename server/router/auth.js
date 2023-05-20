@@ -1,6 +1,7 @@
 /** @format */
 
 const express = require('express');
+const bcrypt = require('bcryptjs');
 const router = express.Router();
 
 require('../db/conn');
@@ -34,7 +35,7 @@ router.post('/register', async (req, res) => {
 				cpassword,
 			});
 
-            //hashing in userSchema
+			//hashing in userSchema
 			await user.save();
 
 			res.status(201).json({
@@ -49,14 +50,17 @@ router.post('/register', async (req, res) => {
 //login route
 
 router.post('/login', async (req, res) => {
-	const { email, password } = req.body;
-	if (!email || !password) {
-		return res.status(400).json({ error: 'Please fill the data' });
-	}
-
 	try {
-		const trueUser = await User.findOne({ email, password });
-		if (trueUser) {
+		const { email, password } = req.body;
+		if (!email || !password) {
+			return res.status(400).json({ error: 'Please fill the data' });
+		}
+
+		const userLogin = await User.findOne({ email});
+
+        const isMatch = await bcrypt.compare(password, userLogin.password);
+
+		if (isMatch && userLogin) {
 			return res.status(200).json({ message: 'Logged In!!!' });
 		}
 
