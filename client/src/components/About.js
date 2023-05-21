@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function About() {
   return (
@@ -14,8 +15,8 @@ export default function About() {
                 <h5>Name</h5>
                 <p>rank</p>
                 <ul class="nav nav-tabs">
-                      <li class="active"><a href="#home">Home</a></li>
-                      <li><a href="#timeline">Menu 1</a></li>
+                      <li class="active"><Link href="#home">Home</Link></li>
+                      <li><Link href="#timeline">Menu 1</Link></li>
                     </ul>
               </div>
             </div>
@@ -29,7 +30,7 @@ export default function About() {
             <div className='col-md-4'>
               <div>
                 <p>Work Links</p>
-                <a href='#'>Insta</a>
+                <Link href='#'>Insta</Link>
               </div>
             </div>
             <div className='col-md-8 pl-5'>

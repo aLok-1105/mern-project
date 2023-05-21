@@ -17,16 +17,16 @@ app.use(require('./router/auth'));
 const PORT = process.env.PORT;
 
 //Middleware
-const mildleware = (req, res, next) => {
-	console.log('Milddleware');
-	next();
-};
+// const mildleware = (req, res, next) => {
+// 	console.log('Milddleware');
+// 	next();
+// };
 
 app.get('/', (req, res) => {
 	res.send('Hello World');
 });
 
-app.get('/about', mildleware, (req, res) => {
+app.get('/about', (req, res) => {
 	res.send('About');
 });
 
@@ -34,7 +34,7 @@ app.get('/contact', (req, res) => {
 	res.send('Contact');
 });
 
-app.get('/signin', (req, res) => {
+app.get('/login', (req, res) => {
 	res.send('Contact');
 });
 

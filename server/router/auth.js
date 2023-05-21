@@ -58,24 +58,35 @@ router.post('/login', async (req, res) => {
 			return res.status(400).json({ error: 'Please fill the data' });
 		}
 
-		const userLogin = await User.findOne({ email});
+		const userLogin = await User.findOne({ email: email});
 
-        const isMatch = await bcrypt.compare(password, userLogin.password);
+		if(userLogin){
+			const isMatch = await bcrypt.compare(password, userLogin.password);
 
-        const token = await userLogin.generateAuthToken();
-        // console.log(token);
+			const token = await userLogin.generateAuthToken();
+			console.log(token);
 
-        res.cookie("jwtoken", token, {
-            expires: new Date(Date.now() + 25892000000),
-            httpOnly: true
-        });
+			res.cookie("jwtoken", token, {
+				expires: new Date(Date.now() + 25892000000),
+				httpOnly: true
+			});
 
-		if (isMatch && userLogin) {
-			return res.status(200).json({ message: 'Logged In!!!' });
-
+			if (!isMatch) {
+				res.status(400).json({ error: 'Invalid Credentials' });
+				
+	
+			}else{
+				res.status(200).json({ message: 'Logged In!!!' });
+			}
+		}else{
+			res.status(400).json({ error: 'Invalid Credentials' });
 		}
 
-		return res.status(422).json({ error: 'Invalid Credentials' });
+        
+
+		
+
+		
 	} catch (error) {
 		console.log(error);
 	}
