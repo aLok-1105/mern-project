@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../App';
 
 
 export default function Logout() {
+
+  const {state, dispatch} = useContext(UserContext);
 
   const history = useNavigate();
 
@@ -16,6 +19,7 @@ export default function Logout() {
         },
         credentials:'include'
         }).then((res)=>{
+            dispatch({type: "USER", payload:false});
             history('/login', {replace:true});
             if(!res.status === 200){
                 throw new Error(res.error);

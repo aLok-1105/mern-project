@@ -7,10 +7,19 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import Home from './components/Home';
 import Logout from './components/Logout';
+import { createContext, useReducer } from 'react';
+import { initialState, reducer } from './reducer/UseReducer';
+
+export const UserContext= createContext();
 
 function App() {
+
+  const [state, dispatch] = useReducer(reducer, initialState)
+
   return (
+    
     <>
+    <UserContext.Provider value={{state, dispatch}}>
     <Navbar/>
       <Routes>
       <Route path='/' element={
@@ -49,6 +58,7 @@ function App() {
         
       </Route>
     </Routes>
+    </UserContext.Provider>
     </>
   );
 }
