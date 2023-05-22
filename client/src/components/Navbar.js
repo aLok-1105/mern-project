@@ -27,7 +27,7 @@ export default function Navbar() {
 						<ul className='navbar-nav ms-auto mb-2 mb-lg-0'>
 							<li className='nav-item'>
 								<NavLink
-									className='nav-link active'
+									className='nav-link '
 									aria-current='page'
 									to='/' >
 									Home
@@ -51,6 +51,11 @@ export default function Navbar() {
 							<li className='nav-item'>
 								<NavLink className='nav-link' to='/register' >
 									Register
+                                    </NavLink>
+							</li>
+							<li className='nav-item'>
+								<NavLink className='nav-link' to='/logout' >
+									Logout
                                     </NavLink>
 							</li>
 						</ul>

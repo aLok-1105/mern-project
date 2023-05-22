@@ -6,6 +6,7 @@ import {Routes, Route} from 'react-router-dom';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Home from './components/Home';
+import Logout from './components/Logout';
 
 function App() {
   return (
@@ -35,6 +36,10 @@ function App() {
 
       <Route path='/login' element={
         <Login/>
+      }>
+      </Route>
+      <Route path='/logout' element={
+        <Logout/>
       }>
       </Route>
 

@@ -122,6 +122,12 @@ router.post('/contact', authenticate, async (req, res)=>{
 	}
 })
 
+router.get('/logout', authenticate, (req, res) => {
+	res.clearCookie('jwtoken', {path:'/'});
+	res.status(200).send("User Logout");
+	
+});
+
 
 
 //promises
