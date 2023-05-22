@@ -12,7 +12,7 @@ export default function Login() {
     event.preventDefault();
 
     const res = await fetch('/login', {
-      method: 'POST',
+      method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
@@ -39,7 +39,7 @@ export default function Login() {
       <div>
         <div className='container'>
         <h2 className='form-title'>Login</h2>
-        <form method='POST'>
+        <form method="POST">
         <div className="mb-3">
                 <label htmlFor="email" className="form-label"><i className="zmdi zmdi-account zmdi-hc-1x me-2" />Email address</label>
                 <input type="email" name='email' className="form-control" value={email} onChange={(event)=>setEmail(event.target.value)} id="email" aria-describedby="emailHelp" />
@@ -48,7 +48,7 @@ export default function Login() {
                 <label htmlFor="password" className="form-label"><i className="zmdi zmdi-account zmdi-hc-1x me-2" />Password</label>
                 <input type="password" name='password' className="form-control" value={password} onChange={(event)=>{setPassword(event.target.value)}} id="password" aria-describedby="emailHelp" />
               </div>
-  <button type="submit" onClick={loginUser} className="btn btn-primary">Log In</button>
+  <button type="submit" onClick={loginUser} className="btn btn-primary" id='login'>Log In</button>
 </form>
         </div>
       </div>

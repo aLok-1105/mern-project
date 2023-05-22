@@ -4,12 +4,15 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
+const cookieParser = require('cookie-parser');
+
 
 dotenv.config({ path: './config.env' });
 
 require('./db/conn');
 
 app.use(express.json());
+app.use(cookieParser());
 
 //linked the router file
 app.use(require('./router/auth'));
@@ -26,21 +29,15 @@ app.get('/', (req, res) => {
 	res.send('Hello World');
 });
 
-app.get('/about', (req, res) => {
-	res.send('About');
-});
+// app.get('/about', (req, res) => {
+// 	res.send('About');
+// });
 
-app.get('/contact', (req, res) => {
-	res.send('Contact');
-});
+// app.get('/contact', (req, res) => {
+// 	res.send('Contact');
+// });
 
-app.get('/login', (req, res) => {
-	res.send('Contact');
-});
 
-app.get('/signup', (req, res) => {
-	res.send('Contact');
-});
 
 app.listen(PORT, () => {
 	console.log(`Server is running at ${PORT}`);
