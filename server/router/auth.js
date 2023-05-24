@@ -90,8 +90,6 @@ router.post('/login', async (req, res) => {
 	}
 });
 
-
-
 router.get('/about', authenticate, (req, res) => {
 	res.send(req.rootUser);
 });

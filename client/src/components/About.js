@@ -22,12 +22,13 @@ export default function About() {
       // console.log(data);
       setUserData(data);
 
-      if(!res.status === 200){
+      if(!res.status === 200 || data){
         throw new Error(res.error);
+
       }
 
     } catch (error) {
-      // console.log(error);
+      console.log("error");
       history("/login");
     }
   }
