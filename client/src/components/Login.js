@@ -40,8 +40,14 @@ export default function Login() {
 
   return (
     <>
-      <div>
-        <div className='container'>
+
+      <div className='container form-cont'>
+        
+
+        {/* <div className='image-cont'> */}
+          <img className='login-img' src='https://img.freepik.com/free-vector/access-control-system-abstract-concept_335657-3180.jpg?w=740&t=st=1685023246~exp=1685023846~hmac=6784aa5788cf6aee25971f82df15dac124862ea7027aff7743500d21a10eb66b' alt=''/>
+        {/* </div> */}
+        <div className='container login-text-cont '>
         <h2 className='form-title'>Login</h2>
         <form method="POST">
         <div className="mb-3">
@@ -52,7 +58,8 @@ export default function Login() {
                 <label htmlFor="password" className="form-label"><i className="zmdi zmdi-account zmdi-hc-1x me-2" />Password</label>
                 <input type="password" name='password' className="form-control" value={password} onChange={(event)=>{setPassword(event.target.value)}} id="password" aria-describedby="emailHelp" />
               </div>
-  <button type="submit" onClick={loginUser} className="btn btn-primary" id='login'>Log In</button>
+<button type="submit" onClick={loginUser} id='login' class="button-89" >Log In</button>
+              
 </form>
         </div>
       </div>

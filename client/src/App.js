@@ -9,6 +9,7 @@ import Home from './components/Home';
 import Logout from './components/Logout';
 import { createContext, useReducer } from 'react';
 import { initialState, reducer } from './reducer/UseReducer';
+import './style/Style.css';
 
 export const UserContext= createContext();
 
