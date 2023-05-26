@@ -27,7 +27,7 @@ export default function Home() {
 
   return (
     <>
-        <div>
+        <div style={{height:'100vh'}}>
         <div className='home-text'>
         <div className='home-text-title'>
         <Typewriter
