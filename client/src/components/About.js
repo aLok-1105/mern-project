@@ -23,15 +23,26 @@ export default function About() {
 
       const data = await res.json();
       // console.log(data);
-      setUserData(data);
+      // setUserData(data);
 
-      if(!res.status === 200 || !data){
-        throw new Error(res.error);
 
+      if (res.status === 200) {
+        // User is logged in, set user data
+        setUserData(data);
+      } else {
+        // User is not logged in, redirect to login page
+        throw new Error('User not authenticated');
       }
 
+      // if(!res.status === 200 || !data){
+      //   console.log("error");
+      //   history('/login');
+      //   throw new Error(res.error);
+      // }
+      
+
     } catch (error) {
-      console.log(error);
+      console.log("error1");
       history("/login");
     }
   }

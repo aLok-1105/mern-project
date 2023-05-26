@@ -6,7 +6,7 @@ export default function Home() {
   const [userData, setUserData] = useState('');
   const [show, setShow] = useState(false);
 
-  console.log(userData);
+  // console.log(userData);
 
   const callHomePage = async ()=>{
     const res = await fetch('/getData', {

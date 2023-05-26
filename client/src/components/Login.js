@@ -47,7 +47,7 @@ export default function Login() {
         
 
         
-          <img className='login-img' src={LOGIN_IMG} alt=''/>
+          {/* <img className='login-img' src={LOGIN_IMG} alt=''/> */}
         
         <div className='container login-text-cont '>
         <h2 className='form-title'>Login</h2>

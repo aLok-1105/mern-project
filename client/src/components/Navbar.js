@@ -5,11 +5,12 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { NavLink } from 'react-router-dom';
 import { UserContext } from '../App';
 
-import LOGO from '../images/logo.gif'
 
 
 export default function Navbar() {
 	const {state, dispatch} = useContext(UserContext);
+
+	console.log(state, dispatch);
 
 	const RenderNavbar =()=>{
 		if(state){
