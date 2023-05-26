@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { NavLink } from 'react-router-dom';
 import { UserContext } from '../App';
 
+import LOGO from '../images/logo.gif'
+
 
 export default function Navbar() {
 	const {state, dispatch} = useContext(UserContext);
@@ -81,7 +83,7 @@ export default function Navbar() {
 			<nav className='navbar navbar-expand-lg bg-body-tertiary'>
 				<div className='container-fluid'>
 					<NavLink className='navbar-brand' to='#' />
-						Navbar
+						N
 					<button
 						className='navbar-toggler'
 						type='button'

@@ -72,10 +72,10 @@ export default function Contact() {
 
   return (
     <>
-      <div>
+      
         <div className='container-fluid my-100'>
           <div className='row '>
-            <div className=' d-flex justify-content-between col-lg-10 offset-1'>
+            {/* <div className=' d-flex justify-content-between col-lg-10 offset-1'>
               <div className='contact-info-item d-flex justify-content-start align-items-center'>
                 <img src='' alt='img' />
                 <div>
@@ -111,24 +111,53 @@ export default function Contact() {
               </div>
 
             </div>
-          </div>
-          <div>
-          <form className='mt-9' method='POST'>
+          </div> */}
+          <div className='form-cont contact-cont'>
+          <h2 className='form-title'>Contact Us</h2>
+          <form className='mt-9 contact-form' method='POST'>
             <div className="mb-3">
+            <label
+										htmlFor='name'
+										className='form-label'>
+										<i className="zmdi zmdi-account-circle zmdi-hc-1x me-2"></i>
+										Name
+									</label>
               <input type="name" onChange={handleInputs} name='name' className="form-control" id="name" aria-describedby="emailHelp" value={userData.name}  />
             </div>
             <div className="mb-3">
+            <label
+										htmlFor='email'
+										className='form-label'>
+										<i className='zmdi zmdi-account zmdi-hc-1x me-2' />
+										Email address
+									</label>
               <input type="email" onChange={handleInputs} name='email' className="form-control" id="email" aria-describedby="emailHelp" value={userData.email} />
             </div>
             <div className="mb-3">
+            <label htmlFor='phone' className='form-label'>
+								<i className='zmdi zmdi-phone zmdi-hc-1x me-2' />
+                Phone
+            </label>
               <input type="phone" onChange={handleInputs} name='phone' className="form-control" id="phone" aria-describedby="emailHelp" value={userData.phone} />
             </div>
             <div className="mb-3">
-              <label htmlFor="exampleFormControlTextarea1" className="form-label">Example textarea</label>
+            <label htmlFor='phone' className='form-label'>
+								<i className='zmdi zmdi-comment zmdi-hc-1x me-2' />
+                Message
+            </label>
               <textarea name='message' onChange={handleInputs} className="form-control" id="exampleFormControlTextarea1" rows="3" value={userData.message} ></textarea>
             </div>
             <div>
-              <button type='submit' onClick={contactForm} >Submit</button>
+            <div className='button'>
+                <button
+									type='submit'
+									name='signup'
+									id='signup'
+									onClick={contactForm}
+									className='button-89'>
+									Submit
+								</button>
+                </div>
             </div>
           </form>
           </div>

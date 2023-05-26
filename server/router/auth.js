@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 
 //async await
 router.post('/register', async (req, res) => {
-	const { name, email, work, phone, password, cpassword } = req.body;
+	const { name, email, work, phone, password, cpassword, profileImg } = req.body;
 
 	if (!name || !email || !work || !phone || !password || !cpassword) {
 		return res.status(422).json({ error: 'Invalid' });
@@ -36,6 +36,7 @@ router.post('/register', async (req, res) => {
 				phone,
 				password,
 				cpassword,
+				profileImg
 			});
 
 			//hashing in userSchema

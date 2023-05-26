@@ -10,6 +10,7 @@ import Logout from './components/Logout';
 import { createContext, useReducer } from 'react';
 import { initialState, reducer } from './reducer/UseReducer';
 import './style/Style.css';
+import Footer from './components/Footer';
 
 export const UserContext= createContext();
 
@@ -58,7 +59,9 @@ function App() {
       }>
         
       </Route>
+      
     </Routes>
+    <Footer />
     </UserContext.Provider>
     </>
   );
