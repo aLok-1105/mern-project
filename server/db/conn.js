@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
 
-const DB = process.env.DATABASE;
+// const DB = process.env.DATABASE;
+const {MOGOURI} = require('../config/keys');
+
 
 mongoose
-	.connect(DB)
+	.connect(MOGOURI)
 	.then(() => {
 		console.log('Connection successful');
 	})

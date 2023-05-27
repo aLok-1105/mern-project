@@ -1,10 +1,13 @@
 const jwt = require('jsonwebtoken');
 const User = require('../model/userSchema');
+const {JWT_SECRET} = require('../config/keys');
+
 
 const Authenticate = async (req, res, next) =>{
     try {
         const token  = req.cookies.jwtoken;
-        const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
+        // const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
+        const verifyToken = jwt.verify(token, JWT_SECRET);
 
         const rootUser = await User.findOne({_id: verifyToken._id, "tokens.token": token});
 

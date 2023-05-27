@@ -90,6 +90,7 @@ export default function Signup() {
 										Name
 									</label>
 									<input
+										required
 										type='name'
 										className='form-control'
 										name='name'
@@ -107,6 +108,7 @@ export default function Signup() {
 										Email address
 									</label>
 									<input
+										required
 										type='email'
 										className='form-control'
 										name='email'
@@ -124,6 +126,7 @@ export default function Signup() {
 										Phone
 									</label>
 									<input
+										required
 										type='phone'
 										className='form-control'
 										name='phone'
@@ -141,6 +144,7 @@ export default function Signup() {
 										Profession
 									</label>
 									<input
+										required
 										type='work'
 										className='form-control'
 										name='work'
@@ -152,12 +156,14 @@ export default function Signup() {
 								</div>
                 <div className='mb-3'>
 									<label
+
 										htmlFor='password'
 										className='form-label'>
                     <i className="zmdi zmdi-key zmdi-hc-1x me-2"></i>
 										Password
 									</label>
 									<input
+										required
 										type='password'
 										className='form-control'
 										name='password'
@@ -175,6 +181,7 @@ export default function Signup() {
 										Confirm Password
 									</label>
 									<input
+										required
 										type='password'
 										className='form-control'
 										name='cpassword'
@@ -185,19 +192,23 @@ export default function Signup() {
 									/>
 								</div>
                 <div className='mb-3'>
+
 									<label
+
 										htmlFor='image'
 										className='form-label'>
 										<i className="zmdi zmdi-image zmdi-hc-1x me-2"></i>
 										Profile Photo
 									</label>
 									<input
+										required
 										type='file'
 										className='form-control'
 										name='profileImg'
                     onChange={convertToBase64}
 										id='profileImg'
 									/>
+									<p style={{fontSize: '10px'}}><i>*Size of Image should be small</i></p>
 								</div>
                 <div className='button'>
                 <button

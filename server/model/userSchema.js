@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const {JWT_SECRET} = require('../config/keys');
+
 
 
 const userSchema = new mongoose.Schema({
@@ -78,7 +80,8 @@ userSchema.pre('save', async function(next) {
 //generating web token
 userSchema.methods.generateAuthToken = async function() {
     try {
-        let token1 = jwt.sign({_id: this._id}, process.env.SECRET_KEY);
+        let token1 = jwt.sign({_id: this._id}, JWT_SECRET);
+        // let token1 = jwt.sign({_id: this._id}, process.env.SECRET_KEY);
         this.tokens = this.tokens.concat({token:token1});
         await this.save();
         return token1;

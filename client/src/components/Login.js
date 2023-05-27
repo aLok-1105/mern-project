@@ -54,11 +54,11 @@ export default function Login() {
         <form method="POST">
         <div className="mb-3">
                 <label htmlFor="email" className="form-label"><i className="zmdi zmdi-email zmdi-hc-1x me-2" />Email address</label>
-                <input type="email" name='email' className="form-control" value={email} onChange={(event)=>setEmail(event.target.value)} id="email" aria-describedby="emailHelp" />
+                <input type="email" name='email' className="form-control" value={email} onChange={(event)=>setEmail(event.target.value)} id="email" aria-describedby="emailHelp" required='true'  />
               </div>
               <div className="mb-3">
                 <label htmlFor="password" className="form-label"><i className="zmdi zmdi-key zmdi-hc-1x me-2" />Password</label>
-                <input type="password" name='password' className="form-control" value={password} onChange={(event)=>{setPassword(event.target.value)}} id="password" aria-describedby="emailHelp" />
+                <input type="password" name='password' className="form-control" value={password} onChange={(event)=>{setPassword(event.target.value)}} id="password" aria-describedby="emailHelp" required='true' />
               </div>
               <div className='button'>
                 <button
